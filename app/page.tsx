@@ -9,6 +9,7 @@ import { content, colors } from "./data/content";
 import { useScrollMeltColor } from "./hooks/useScrollMeltColor";
 import { useSectionOffsets } from "./hooks/useSectionOffsets";
 import { Lang } from "./types";
+import { Footer } from "./components/Footer";
 
 export default function OldCityLanding() {
   const [lang, setLang] = useState<Lang>("ru");
@@ -38,7 +39,7 @@ export default function OldCityLanding() {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-t from-[#c6a052]/5 via-transparent to-transparent rounded-full blur-3xl" />
               <Image
-                src="/images/old-city.png"
+                src="/images/old-city1.png"
                 alt="Icheri Sheher - Old City Baku"
                 width={800}
                 height={800}
@@ -52,7 +53,7 @@ export default function OldCityLanding() {
             <h1 className="text-4xl md:text-7xl font-semi-bold text-[#0d1a26] tracking-tight leading-[1.05]">
               {content.hero.title[lang]}
             </h1>
-            <p className="text-xs md:text-sm tracking-[0.3em] uppercase text-[#aaaa04dc] font-sans font-medium">
+            <p className="text-xs md:text-sm tracking-[0.3em] uppercase text-[#A68F58] --font-playfair font-medium">
               {content.hero.subtitle[lang]}
             </p>
 
@@ -80,7 +81,7 @@ export default function OldCityLanding() {
             }}
             className="py-4 md:py-6"
           >
-            <StoryCard lang={lang} data={section} index={i} />
+            <StoryCard lang={lang} data={section} index={i} pageBg={bg} />
 
             {i < content.sections.length - 1 && (
               <div className="flex items-center justify-center py-2 md:py-4 opacity-30">
@@ -110,11 +111,35 @@ export default function OldCityLanding() {
             </h2>
           </div>
 
+          {/* Список тем */}
           <div className="space-y-4 md:space-y-6">
-            {content.themes.map((theme, i) => (
+            {content.themes.items.map((theme, i) => (  // ✅ content.themes.items
               <ThemeCard key={i} lang={lang} {...theme} index={i} />
             ))}
           </div>
+
+          {/* Общая картинка в конце секции */}
+          {content.themes.image && (
+            <figure className="mt-8 md:mt-10 rounded-2xl overflow-hidden bg-white shadow-md border border-black/[0.06]">
+              <div className="relative w-full aspect-[16/10] overflow-hidden">
+                <Image
+                  src={content.themes.image}
+                  alt={content.themes.imageAlt?.[lang] ?? "Theme"}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 600px"
+                  className="object-cover"
+                />
+              </div>
+              <figcaption className="px-3.5 py-2 bg-black/[0.02] flex items-center justify-between text-[11px] font-medium tracking-wide">
+                <span className="text-[#4A5568]/70">
+                  {content.themes.imageAlt?.[lang]}
+                </span>
+                <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#A68F58]">
+                  {content.themes.imageLabel?.[lang]}
+                </span>
+              </figcaption>
+            </figure>
+          )}
 
           <div className="mt-12 md:mt-16 pt-8 md:pt-12 border-t border-[#c6a052]/10">
             <h3 className="text-lg md:text-xl font-bold text-[#0d1a26] mb-4 md:mb-6">
@@ -137,6 +162,7 @@ export default function OldCityLanding() {
           </div>
         </div>
       </section>
+       <Footer lang={lang} />
     </div>
   );
 }
