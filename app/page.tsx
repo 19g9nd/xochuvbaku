@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { LangToggle } from "./components/LangToggle";
 import { StoryCard } from "./components/StoryCard";
 import { ThemeCard } from "./components/ThemeCard";
 import { content, colors } from "./data/content";
@@ -13,6 +12,8 @@ import { Footer } from "./components/Footer";
 import { MobileDrawer } from "./components/MobileDrawer";
 import { Header } from "./components/Header";
 import { DesktopMenu } from "./components/DesktopMenu";
+import { StickyCTA } from "./components/StickyCTA";
+import { BookingCard } from "./components/BookingCard";
 
 export default function OldCityLanding() {
   const [lang, setLang] = useState<Lang>("ru");
@@ -41,7 +42,7 @@ export default function OldCityLanding() {
   return (
     <div
       style={{ backgroundColor: bg }}
-      className="min-h-screen text-[#1c2a38] font-serif selection:bg-[#c6a052]/15 transition-colors duration-300"
+      className="min-h-screen text-[#1c2a38] font-serif selection:bg-brand-chartreuse transition-colors duration-300"
       suppressHydrationWarning
     >
 
@@ -70,7 +71,7 @@ export default function OldCityLanding() {
 
 
       {/* === ОТСТУП СВЕРХУ (высота header) === */}
-      <main className="pt-16 pb-28">
+      <main className="flex-1 pt-16 md:pt-20 lg:pt-16 pb-0">
         {/* Hero Section */}
         <section
           ref={(el) => {
@@ -78,7 +79,6 @@ export default function OldCityLanding() {
           }}
           className="min-h-screen flex items-center justify-center px-4 md:px-6 relative overflow-hidden"
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-[#d2e4f7]/30 via-transparent to-transparent" />
           <div className="max-w-4xl w-full mx-auto text-center relative z-10">
             <div className="w-full max-w-xs md:max-w-md mx-auto mb-6 md:mb-8">
               <div className="relative">
@@ -95,19 +95,19 @@ export default function OldCityLanding() {
             </div>
 
             <div className="space-y-2">
-              <h1 className="text-4xl md:text-7xl font-semi-bold text-[#0d1a26] tracking-tight leading-[1.05]">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-[#0d1a26] tracking-tight leading-[1.05]">
                 {content.hero.title[lang]}
               </h1>
-              <p className="text-xs md:text-sm tracking-[0.3em] uppercase text-[#A68F58] --font-playfair font-medium">
+              <p className="text-xs md:text-sm tracking-[0.3em] uppercase text-[#A68F58] font-medium">
                 {content.hero.subtitle[lang]}
               </p>
 
-              <p className="text-base md:text-xl text-[#1c2a38]/55 font-light max-w-lg mx-auto px-2">
+              <p className="text-base md:text-lg text-[#1c2a38]/55 font-light max-w-lg mx-auto px-2">
                 {content.hero.description[lang]}
               </p>
             </div>
 
-            <div className="mt-8 md:mt-12 flex justify-center">
+            <div className="mt-6 md:mt-8 flex justify-center">
               <div className="flex flex-col items-center gap-2 text-[#1c2a38]/25">
                 <span className="text-xs tracking-widest uppercase font-sans">Scroll</span>
                 <span className="w-px h-10 md:h-12 bg-gradient-to-b from-[#1c2a38]/15 to-transparent" />
@@ -144,7 +144,7 @@ export default function OldCityLanding() {
           ref={(el) => {
             refs.current[content.sections.length + 1] = el;
           }}
-          className="py-12 md:py-20"
+          className=""
         >
           <div className="max-w-xl mx-auto px-4 md:px-6">
             <div className="mb-8 md:mb-12">
@@ -200,6 +200,7 @@ export default function OldCityLanding() {
               </ul>
             </div>
 
+            <BookingCard lang={lang} />
             <div className="mt-8 md:mt-12 text-center">
               <p className="text-sm text-[#1c2a38]/25 font-light tracking-wider">
                 {lang === 'ru' ? 'Ичери Шехер ждет вас' : 'Icheri Sheher awaits you'}
@@ -207,8 +208,13 @@ export default function OldCityLanding() {
             </div>
           </div>
         </section>
-
       </main>
+      
+      <StickyCTA
+        lang={lang}
+        priceFrom={60}
+        hidden={menuOpen}  // ← скрыт, когда открыто меню
+      />
       <Footer lang={lang} />
     </div>
   );
