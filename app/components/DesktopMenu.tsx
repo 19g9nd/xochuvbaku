@@ -1,7 +1,15 @@
 "use client";
 
-import Image from "next/image";
 import { Lang } from "../types";
+import { BrandIcon, type BrandIconName } from "./BrandIcon";
+
+type MenuItem = {
+  href: string;
+  icon: BrandIconName;
+  label: Record<Lang, string>;
+  meta?: Record<Lang, string>;
+  active?: boolean;
+};
 
 interface DesktopMenuProps {
   lang: Lang;
@@ -10,53 +18,53 @@ interface DesktopMenuProps {
 }
 
 export function DesktopMenu({ lang, isOpen, onClose }: DesktopMenuProps) {
-  const routes = [
+  const routes: MenuItem[] = [
     {
       href: "#hero",
-      icon: "🏰",
+      icon: "castle",
       label: { ru: "Ичери Шехер", en: "Icheri Sheher" },
       meta: { ru: "2.5ч · Пешком", en: "2.5h · Walking" },
       active: true,
     },
     {
       href: "#recommended",
-      icon: "🌊",
+      icon: "waves",
       label: { ru: "Современный Баку и закат", en: "Modern Baku & Sunset" },
       meta: { ru: "2.5ч · 50₼", en: "2.5h · 50 AZN" },
     },
     {
       href: "#recommended",
-      icon: "🌋",
+      icon: "volcano",
       label: { ru: "Гобустан и грязевые вулканы", en: "Gobustan & Mud Volcanoes" },
       meta: { ru: "5ч · 110₼", en: "5h · 110 AZN" },
     },
     {
       href: "#recommended",
-      icon: "🌙",
+      icon: "moon",
       label: { ru: "Ночная иллюминация Баку", en: "Baku Night Illumination" },
       meta: { ru: "2ч · 45₼", en: "2h · 45 AZN" },
     },
   ];
 
-  const explore = [
+  const explore: MenuItem[] = [
     {
       href: "#booking",
-      icon: "🦝",
+      icon: "raccoon",
       label: { ru: "О гиде Raccoon", en: "About Raccoon Guide" },
     },
     {
       href: "#practical",
-      icon: "📋",
+      icon: "clipboard",
       label: { ru: "Практика и точки встречи", en: "Practical Info & Meeting Points" },
     },
     {
       href: "#themes",
-      icon: "☕",
+      icon: "coffee",
       label: { ru: "Культура и чайхана", en: "Chaykhana Culture" },
     },
     {
       href: "#recommended",
-      icon: "✨",
+      icon: "sparkles",
       label: { ru: "Другие прогулки", en: "More Walks" },
     },
   ];
@@ -112,13 +120,13 @@ export function DesktopMenu({ lang, isOpen, onClose }: DesktopMenuProps) {
                   >
                     {/* Иконка */}
                     <span
-                      className={`text-2xl flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center ${
+                      className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center ${
                         route.active
                           ? "bg-brand-blue/10"
                           : "bg-[#F8F9FF] group-hover:bg-white"
                       }`}
                     >
-                      {route.icon}
+                      <BrandIcon name={route.icon} className="w-6 h-6 text-brand-blue" />
                     </span>
 
                     {/* Контент */}
@@ -164,9 +172,7 @@ export function DesktopMenu({ lang, isOpen, onClose }: DesktopMenuProps) {
                       onClick={onClose}
                       className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#171C24] hover:bg-black/[0.03] font-medium text-sm transition-all group"
                     >
-                      <span className="text-base opacity-70 group-hover:opacity-100 transition-opacity">
-                        {item.icon}
-                      </span>
+                      <BrandIcon name={item.icon} className="w-[18px] h-[18px] text-brand-blue/80 group-hover:text-brand-blue transition-colors" />
                       <span>{item.label[lang]}</span>
                     </a>
                   </li>

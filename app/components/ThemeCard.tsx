@@ -1,6 +1,7 @@
 import { useReveal } from "../hooks/useReveal";
 import { Lang } from "../types";
 import Image from "next/image";
+import { BrandIcon } from "./BrandIcon";
 
 interface ThemeCardProps {
   lang: Lang;
@@ -22,13 +23,13 @@ export function ThemeCard({ lang, title, desc, index, image }: ThemeCardProps) {
     >
       <div className="flex items-start gap-4 py-2">
         {/* Декоративная звездочка */}
-        <span className="text-xl opacity-30 font-serif mt-0.5">✦</span>
+        <BrandIcon name="sparkles" className="w-4 h-4 text-brand-blue/70 mt-1" />
         
         <div className="flex-1">
           {/* Контент с изображением */}
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="flex-1">
-              <h4 className="font-bold text-[#1c2a38] mb-1">{title[lang]}</h4>
+              <h4 className="font-bold text-[#1c2a38] mb-1 font-display text-lg">{title[lang]}</h4>
               <p className="text-sm text-[#1c2a38]/65 leading-relaxed">{desc[lang]}</p>
             </div>
             

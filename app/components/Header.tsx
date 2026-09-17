@@ -38,7 +38,7 @@ export function Header({
             <span className="text-xs tracking-widest font-sans font-semibold uppercase text-brand-blue">
               Baku Walks
             </span>
-            <span className="font-serif italic text-xs text-[#4A5568] leading-none">
+            <span className="font-display italic text-xs text-[#4A5568] leading-none">
               with Raccoon
             </span>
           </div>

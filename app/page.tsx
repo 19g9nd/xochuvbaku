@@ -14,6 +14,7 @@ import { Header } from "./components/Header";
 import { DesktopMenu } from "./components/DesktopMenu";
 import { StickyCTA } from "./components/StickyCTA";
 import { BookingCard } from "./components/BookingCard";
+import { BrandIcon } from "./components/BrandIcon";
 
 export default function OldCityLanding() {
   const [lang, setLang] = useState<Lang>("ru");
@@ -95,7 +96,7 @@ export default function OldCityLanding() {
             </div>
 
             <div className="space-y-2">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-[#0d1a26] tracking-tight leading-[1.05]">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-[#0d1a26] tracking-tight leading-[1.05] font-display">
                 {content.hero.title[lang]}
               </h1>
               <p className="text-xs md:text-sm tracking-[0.3em] uppercase text-[#A68F58] font-medium">
@@ -110,7 +111,11 @@ export default function OldCityLanding() {
             <div className="mt-6 md:mt-8 flex justify-center">
               <div className="flex flex-col items-center gap-2 text-[#1c2a38]/25">
                 <span className="text-xs tracking-widest uppercase font-sans">Scroll</span>
-                <span className="w-px h-10 md:h-12 bg-gradient-to-b from-[#1c2a38]/15 to-transparent" />
+                <BrandIcon
+                  name="sparkles"
+                  className="w-3.5 h-3.5 text-brand-blue/60 scroll-cue-arrow"
+                />
+                <span className="w-px h-10 md:h-12 bg-gradient-to-b from-brand-blue/40 to-transparent scroll-cue-line" />
               </div>
             </div>
           </div>
@@ -131,7 +136,7 @@ export default function OldCityLanding() {
               {i < content.sections.length - 1 && (
                 <div className="flex items-center justify-center py-2 md:py-4 opacity-30">
                   <div className="h-px bg-gradient-to-r from-transparent via-[#c6a052]/30 to-transparent flex-1" />
-                  <span className="px-3 text-[#c6a052] text-xs">✦</span>
+                  <BrandIcon name="sparkles" className="w-3.5 h-3.5 text-brand-blue/80 mx-3" />
                   <div className="h-px bg-gradient-to-r from-transparent via-[#c6a052]/30 to-transparent flex-1" />
                 </div>
               )}
@@ -151,7 +156,7 @@ export default function OldCityLanding() {
               <span className="text-xs tracking-[0.3em] uppercase text-[#8c1c2b]/40 font-sans font-medium">
                 {lang === 'ru' ? 'О чем будем говорить' : 'What We\'ll Discuss'}
               </span>
-              <h2 className="text-2xl md:text-3xl font-bold text-[#0d1a26] mt-2">
+              <h2 className="text-2xl md:text-3xl font-bold text-[#0d1a26] mt-2 font-display">
                 {lang === 'ru' ? 'Темы экскурсии' : 'Tour Themes'}
               </h2>
             </div>
@@ -187,13 +192,13 @@ export default function OldCityLanding() {
             )}
 
             <div className="mt-12 md:mt-16 pt-8 md:pt-12 border-t border-[#c6a052]/10">
-              <h3 className="text-lg md:text-xl font-bold text-[#0d1a26] mb-4 md:mb-6">
+              <h3 className="text-lg md:text-xl font-bold text-[#0d1a26] mb-4 md:mb-6 font-display">
                 {content.practical.eyebrow[lang]}
               </h3>
               <ul className="space-y-2 md:space-y-3">
                 {content.practical.points[lang].map((point, i) => (
                   <li key={i} className="flex gap-3 text-sm text-[#1c2a38]/65 leading-relaxed">
-                    <span className="text-[#c6a052] mt-0.5 text-xs">✦</span>
+                    <BrandIcon name="sparkles" className="w-3.5 h-3.5 text-brand-blue/80 mt-0.5" />
                     <span>{point}</span>
                   </li>
                 ))}

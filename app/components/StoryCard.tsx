@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useReveal } from "../hooks/useReveal";
 import { Lang, SectionData } from "../types";
+import { BrandIcon } from "./BrandIcon";
 
 interface StoryCardProps {
   lang: Lang;
@@ -39,7 +40,7 @@ export function StoryCard({ lang, data, index, pageBg }: StoryCardProps) {
       <div className="py-6 md:py-8">
         {/* Шапка карточки */}
         <div className="flex items-center gap-3 mb-3">
-          <span className="text-2xl md:text-3xl">{data.icon}</span>
+          <BrandIcon name={data.icon} className="w-6 h-6 md:w-7 md:h-7 text-brand-blue/90" />
           <span className="text-xs tracking-[0.3em] uppercase text-[#8c1c2b]/50 font-sans font-medium">
             {data.eyebrow[lang]}
           </span>
@@ -49,7 +50,7 @@ export function StoryCard({ lang, data, index, pageBg }: StoryCardProps) {
         </div>
 
         {/* Заголовок */}
-        <h2 className="text-2xl md:text-3xl font-bold text-[#0d1a26] mb-3 tracking-tight leading-[1.2]">
+        <h2 className="text-2xl md:text-3xl font-bold text-[#0d1a26] mb-3 tracking-tight leading-[1.2] font-display">
           {data.title[lang]}
         </h2>
 

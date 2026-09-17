@@ -2,6 +2,16 @@
 
 import Image from "next/image";
 import { Lang } from "../types";
+import { BrandIcon, type BrandIconName } from "./BrandIcon";
+
+type DrawerItem = {
+  href: string;
+  icon: BrandIconName;
+  label: Record<Lang, string>;
+  badge?: Record<Lang, string>;
+  meta?: string;
+  active?: boolean;
+};
 
 interface MobileDrawerProps {
   lang: Lang;
@@ -17,48 +27,48 @@ export function MobileDrawer({
   onLangChange,
 }: MobileDrawerProps) {
   // Ссылки навигации
-  const routes = [
+  const routes: DrawerItem[] = [
     {
       href: "#hero",
-      icon: "🏰",
+      icon: "castle",
       label: { ru: "Ичери Шехер", en: "Icheri Sheher" },
       badge: { ru: "Текущий", en: "Current" },
       active: true,
     },
     {
       href: "#recommended",
-      icon: "🌊",
+      icon: "waves",
       label: { ru: "Современный Баку и закат", en: "Modern Baku & Sunset" },
       meta: "2.5h",
     },
     {
       href: "#recommended",
-      icon: "🌋",
+      icon: "volcano",
       label: { ru: "Гобустан и грязевые вулканы", en: "Gobustan & Mud Volcanoes" },
       meta: "5h",
     },
     {
       href: "#recommended",
-      icon: "🌙",
+      icon: "moon",
       label: { ru: "Ночная иллюминация Баку", en: "Baku Night Illumination" },
       meta: "2h",
     },
   ];
 
-  const explore = [
+  const explore: DrawerItem[] = [
     {
       href: "#booking",
-      icon: "🦝",
+      icon: "raccoon",
       label: { ru: "О гиде Raccoon", en: "About Raccoon Guide" },
     },
     {
       href: "#practical",
-      icon: "📋",
+      icon: "clipboard",
       label: { ru: "Практика и точки встречи", en: "Practical Info & Meeting Points" },
     },
     {
       href: "#themes",
-      icon: "☕",
+      icon: "coffee",
       label: { ru: "Культура и чайхана", en: "Culture & Chaykhana Secrets" },
     },
   ];
@@ -97,7 +107,7 @@ export function MobileDrawer({
               <span className="block text-xs tracking-widest font-semibold uppercase text-brand-blue leading-none">
                 Baku Walks
               </span>
-              <span className="font-sans italic text-xs text-[#4A5568] leading-none">
+              <span className="font-display italic text-xs text-[#4A5568] leading-none">
                 with Raccoon
               </span>
             </div>
@@ -169,7 +179,7 @@ export function MobileDrawer({
               }`}
             >
               <div className="flex items-center gap-2.5">
-                <span className="text-base">{route.icon}</span>
+                <BrandIcon name={route.icon} className="w-[18px] h-[18px] text-brand-blue" />
                 <span>{route.label[lang]}</span>
               </div>
               {route.badge ? (
@@ -197,7 +207,7 @@ export function MobileDrawer({
               onClick={onClose}
               className="flex items-center font-sans gap-2.5 px-3.5 py-2.5 rounded-xl text-[#171C24] hover:bg-black/[0.03] font-medium text-sm transition-all"
             >
-              <span className="text-base">{item.icon}</span>
+              <BrandIcon name={item.icon} className="w-[18px] h-[18px] text-brand-blue" />
               <span>{item.label[lang]}</span>
             </a>
           ))}
