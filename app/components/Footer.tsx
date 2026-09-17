@@ -98,13 +98,13 @@ export function Footer({ lang }: FooterProps) {
                 <span className="block text-xs tracking-widest font-semibold uppercase text-brand-blue leading-none">
                   {copy.brandTag[lang]}
                 </span>
-                <span className="font-serif italic text-sm text-[#4A5568] leading-none">
+                <span className="font-sans italic text-sm text-[#4A5568] leading-none">
                   {copy.brandSub[lang]}
                 </span>
               </div>
             </div>
 
-            <p className="font-serif text-sm md:text-base text-[#4A5568]/85 leading-relaxed md:max-w-sm">
+            <p className="font-sans text-sm md:text-base text-[#4A5568]/85 leading-relaxed md:max-w-sm">
               {copy.description[lang]}
             </p>
 
@@ -182,7 +182,7 @@ export function Footer({ lang }: FooterProps) {
         {/* === КОПИРАЙТ === */}
         <div className="mt-8 md:mt-12 pt-5 md:pt-6 border-t border-black/[0.05] text-[11px] text-[#4A5568]/60 leading-relaxed flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-4 text-center md:text-left">
           <p>{copy.copyright[lang]}</p>
-          <p className="font-serif italic">{copy.tagline[lang]}</p>
+          <p className="font-sans italic">{copy.tagline[lang]}</p>
         </div>
       </div>
     </footer>

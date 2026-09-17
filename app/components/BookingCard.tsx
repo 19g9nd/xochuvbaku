@@ -63,7 +63,7 @@ export function BookingCard({ lang }: BookingCardProps) {
             </div>
             <h4
               id="booking-card-title"
-              className="font-serif text-lg font-bold text-[#171C24] leading-tight"
+              className="font-sans text-lg font-bold text-[#171C24] leading-tight"
             >
               {copy.guideName[lang]}
             </h4>

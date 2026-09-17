@@ -22,7 +22,7 @@ export function ThemeCard({ lang, title, desc, index, image }: ThemeCardProps) {
     >
       <div className="flex items-start gap-4 py-2">
         {/* Декоративная звездочка */}
-        <span className="text-xl opacity-30 font-serif mt-0.5">✦</span>
+        <span className="text-xl opacity-30 font-sans mt-0.5">✦</span>
         
         <div className="flex-1">
           {/* Контент с изображением */}

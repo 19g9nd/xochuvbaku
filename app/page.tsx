@@ -42,7 +42,7 @@ export default function OldCityLanding() {
   return (
     <div
       style={{ backgroundColor: bg }}
-      className="min-h-screen text-[#1c2a38] font-serif selection:bg-brand-chartreuse transition-colors duration-300"
+      className="min-h-screen text-[#1c2a38] font-sans selection:bg-brand-chartreuse transition-colors duration-300"
       suppressHydrationWarning
     >
 

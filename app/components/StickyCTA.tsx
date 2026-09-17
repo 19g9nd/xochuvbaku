@@ -46,7 +46,7 @@ export function StickyCTA({
             <p className="text-[10px] uppercase font-bold tracking-wider text-slate-400 font-sans">
               {copy.label[lang]}
             </p>
-            <p className="text-base md:text-lg font-serif font-bold text-[#171C24] leading-tight">
+            <p className="text-base md:text-lg font-sans font-bold text-[#171C24] leading-tight">
               {copy.priceFrom[lang]}{" "}
               <span className="tabular-nums">{priceFrom}</span>{" "}
               <span className="text-sm font-sans font-medium text-[#4A5568]">
