@@ -4,11 +4,11 @@ import {
   ClipboardList,
   Coffee,
   Landmark,
+  Mountain,
   MoonStar,
   Palette,
   PawPrint,
   Sparkles,
-  Volcano,
   Waves,
   Flower2,
 } from "lucide-react";
@@ -24,7 +24,7 @@ interface BrandIconProps {
 const icons = {
   castle: Castle,
   waves: Waves,
-  volcano: Volcano,
+  volcano: Mountain,
   moon: MoonStar,
   raccoon: PawPrint,
   clipboard: ClipboardList,
