@@ -1,221 +1,50 @@
-"use client";
-
-import { useEffect, useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
-import { StoryCard } from "./components/StoryCard";
-import { ThemeCard } from "./components/ThemeCard";
-import { content, colors } from "./data/content";
-import { useScrollMeltColor } from "./hooks/useScrollMeltColor";
-import { useSectionOffsets } from "./hooks/useSectionOffsets";
-import { Lang } from "./types";
-import { Footer } from "./components/Footer";
-import { MobileDrawer } from "./components/MobileDrawer";
-import { Header } from "./components/Header";
-import { DesktopMenu } from "./components/DesktopMenu";
-import { StickyCTA } from "./components/StickyCTA";
-import { BookingCard } from "./components/BookingCard";
+import { toursList } from "./data/tours/tours-index";
 
-export default function OldCityLanding() {
-  const [lang, setLang] = useState<Lang>("ru");
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const totalSections = content.sections.length + 2;
-  const { refs, offsets } = useSectionOffsets(totalSections);
-  const bg = useScrollMeltColor(colors, offsets);
-  // Блокировка скролла
-  useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [menuOpen]);
-
-  // Escape закрывает
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && menuOpen) setMenuOpen(false);
-    };
-    window.addEventListener("keydown", handleEscape);
-    return () => window.removeEventListener("keydown", handleEscape);
-  }, [menuOpen]);
-
+export default function Home() {
   return (
-    <div
-      style={{ backgroundColor: bg }}
-      className="min-h-screen text-[#1c2a38] font-serif selection:bg-brand-chartreuse transition-colors duration-300"
-      suppressHydrationWarning
-    >
+    <div className="min-h-screen p-6 md:p-12">
+      <header className="max-w-6xl mx-auto mb-10">
+        <h1 className="text-4xl md:text-6xl font-serif font-semibold">
+          Baku Walks
+        </h1>
+        <p className="text-[#4A5568] mt-2">
+          Пешеходные экскурсии по Баку
+        </p>
+      </header>
 
-      {/* === HEADER === */}
-      <Header
-        lang={lang}
-        onLangChange={setLang}
-        onMenuOpen={() => setMenuOpen((v) => !v)} // toggle
-        isMenuOpen={menuOpen}
-      />
-
-      {/* Mobile drawer — виден только < md */}
-      <MobileDrawer
-        lang={lang}
-        isOpen={menuOpen}
-        onClose={() => setMenuOpen(false)}
-        onLangChange={setLang}
-      />
-
-      {/* Desktop mega-menu — виден только ≥ md */}
-      <DesktopMenu
-        lang={lang}
-        isOpen={menuOpen}
-        onClose={() => setMenuOpen(false)}
-      />
-
-
-      {/* === ОТСТУП СВЕРХУ (высота header) === */}
-      <main className="flex-1 pt-16 md:pt-20 lg:pt-16 pb-0">
-        {/* Hero Section */}
-        <section
-          ref={(el) => {
-            refs.current[0] = el;
-          }}
-          className="min-h-screen flex items-center justify-center px-4 md:px-6 relative overflow-hidden"
-        >
-          <div className="max-w-4xl w-full mx-auto text-center relative z-10">
-            <div className="w-full max-w-xs md:max-w-md mx-auto mb-6 md:mb-8">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-t from-[#c6a052]/5 via-transparent to-transparent rounded-full blur-3xl" />
-                <Image
-                  src="/images/old-city1.png"
-                  alt="Icheri Sheher - Old City Baku"
-                  width={800}
-                  height={800}
-                  className="w-full h-auto object-contain relative"
-                  priority
-                />
-              </div>
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {toursList.map((tour) => (
+          <Link
+            key={tour.slug}
+            href={`/tour/${tour.slug}`}
+            className="group block rounded-2xl overflow-hidden bg-white border border-black/[0.06] shadow-sm hover:shadow-lg transition-all"
+          >
+            <div className="relative w-full aspect-[4/3] overflow-hidden">
+              <Image
+                src={tour.hero.image}
+                alt={tour.hero.title.ru}
+                fill
+                sizes="(max-width: 768px) 100vw, 400px"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
             </div>
-
-            <div className="space-y-2">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-[#0d1a26] tracking-tight leading-[1.05]">
-                {content.hero.title[lang]}
-              </h1>
-              <p className="text-xs md:text-sm tracking-[0.3em] uppercase text-[#A68F58] font-medium">
-                {content.hero.subtitle[lang]}
-              </p>
-
-              <p className="text-base md:text-lg text-[#1c2a38]/55 font-light max-w-lg mx-auto px-2">
-                {content.hero.description[lang]}
-              </p>
-            </div>
-
-            <div className="mt-6 md:mt-8 flex justify-center">
-              <div className="flex flex-col items-center gap-2 text-[#1c2a38]/25">
-                <span className="text-xs tracking-widest uppercase font-sans">Scroll</span>
-                <span className="w-px h-10 md:h-12 bg-gradient-to-b from-[#1c2a38]/15 to-transparent" />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Story Sections */}
-        <div className="max-w-xl mx-auto px-4 md:px-6">
-          {content.sections.map((section, i) => (
-            <section
-              key={i}
-              ref={(el) => {
-                refs.current[i + 1] = el;
-              }}
-              className="py-4 md:py-6"
-            >
-              <StoryCard lang={lang} data={section} index={i} pageBg={bg} />
-
-              {i < content.sections.length - 1 && (
-                <div className="flex items-center justify-center py-2 md:py-4 opacity-30">
-                  <div className="h-px bg-gradient-to-r from-transparent via-[#c6a052]/30 to-transparent flex-1" />
-                  <span className="px-3 text-[#c6a052] text-xs">✦</span>
-                  <div className="h-px bg-gradient-to-r from-transparent via-[#c6a052]/30 to-transparent flex-1" />
-                </div>
-              )}
-            </section>
-          ))}
-        </div>
-
-        {/* Themes & Practical Info Section */}
-        <section
-          ref={(el) => {
-            refs.current[content.sections.length + 1] = el;
-          }}
-          className=""
-        >
-          <div className="max-w-xl mx-auto px-4 md:px-6">
-            <div className="mb-8 md:mb-12">
-              <span className="text-xs tracking-[0.3em] uppercase text-[#8c1c2b]/40 font-sans font-medium">
-                {lang === 'ru' ? 'О чем будем говорить' : 'What We\'ll Discuss'}
-              </span>
-              <h2 className="text-2xl md:text-3xl font-bold text-[#0d1a26] mt-2">
-                {lang === 'ru' ? 'Темы экскурсии' : 'Tour Themes'}
+            <div className="p-5">
+              <h2 className="font-serif text-xl font-bold mb-1 group-hover:text-brand-blue transition-colors">
+                {tour.hero.title.ru}
               </h2>
-            </div>
-
-            {/* Список тем */}
-            <div className="space-y-4 md:space-y-6">
-              {content.themes.items.map((theme, i) => (
-                <ThemeCard key={i} lang={lang} {...theme} index={i} />
-              ))}
-            </div>
-
-            {/* Общая картинка в конце секции */}
-            {content.themes.image && (
-              <figure className="mt-8 md:mt-10 rounded-2xl overflow-hidden bg-white shadow-md border border-black/[0.06]">
-                <div className="relative w-full aspect-[16/10] overflow-hidden">
-                  <Image
-                    src={content.themes.image}
-                    alt={content.themes.imageAlt?.[lang] ?? "Theme"}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 600px"
-                    className="object-cover"
-                  />
-                </div>
-                <figcaption className="px-3.5 py-2 bg-black/[0.02] flex items-center justify-between text-[11px] font-medium tracking-wide">
-                  <span className="text-[#4A5568]/70">
-                    {content.themes.imageAlt?.[lang]}
-                  </span>
-                  <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#A68F58]">
-                    {content.themes.imageLabel?.[lang]}
-                  </span>
-                </figcaption>
-              </figure>
-            )}
-
-            <div className="mt-12 md:mt-16 pt-8 md:pt-12 border-t border-[#c6a052]/10">
-              <h3 className="text-lg md:text-xl font-bold text-[#0d1a26] mb-4 md:mb-6">
-                {content.practical.eyebrow[lang]}
-              </h3>
-              <ul className="space-y-2 md:space-y-3">
-                {content.practical.points[lang].map((point, i) => (
-                  <li key={i} className="flex gap-3 text-sm text-[#1c2a38]/65 leading-relaxed">
-                    <span className="text-[#f59e0b] mt-0.5 text-xl">✦</span>
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <BookingCard lang={lang} />
-            <div className="mt-8 md:mt-12 text-center">
-              <p className="text-sm text-[#1c2a38]/25 font-light tracking-wider">
-                {lang === 'ru' ? 'Ичери Шехер ждет вас' : 'Icheri Sheher awaits you'}
+              <p className="text-sm text-[#4A5568] line-clamp-2 mb-3">
+                {tour.hero.description.ru}
               </p>
+              <div className="flex items-center justify-between text-xs text-[#4A5568] pt-3 border-t border-black/[0.04]">
+                <span>{tour.duration}</span>
+                <span className="text-[#A68F58] font-semibold">{tour.price} AZN</span>
+              </div>
             </div>
-          </div>
-        </section>
-      </main>
-      
-      <StickyCTA
-        lang={lang}
-        priceFrom={60}
-        hidden={menuOpen}  // ← скрыт, когда открыто меню
-      />
-      <Footer lang={lang} />
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }

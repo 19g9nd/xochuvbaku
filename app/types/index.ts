@@ -1,4 +1,3 @@
-// types/index.ts
 export type Lang = "ru" | "en";
 export type ColorStop = [number, number, number]; // RGB colour [red,green,blue] values
 export type IconName =
@@ -10,6 +9,7 @@ export type IconName =
   | "palace"
   | "market"
   | "garden";
+
 
 export interface SectionData {
   id: string;
@@ -49,16 +49,35 @@ export interface HeroData {
   title: Record<Lang, string>;
   subtitle: Record<Lang, string>;
   description: Record<Lang, string>;
+  image: string;
 }
 
 export interface PracticalData {
   eyebrow: Record<Lang, string>;
   points: Record<Lang, string[]>;
 }
-
-export interface CopyData {
+export interface BookingData {
+  certified: Record<Lang, string>;
+  guideName: Record<Lang, string>;
+  guideSub: Record<Lang, string>;
+  durationLabel: Record<Lang, string>;
+  durationValue: Record<Lang, string>;
+  formatLabel: Record<Lang, string>;
+  formatValue: Record<Lang, string>;
+  languagesLabel: Record<Lang, string>;
+  languagesValue: Record<Lang, string>;
+  ctaPrimary: Record<Lang, string>;
+  ctaSecondary: Record<Lang, string>;
+}
+export interface TourData {
+  slug: string;                  // ← URL: /tour/icheri-sheher
   hero: HeroData;
   sections: SectionData[];
-  themes: ThemesSection;      // ← теперь это объект, а не массив
+  themes: ThemesSection;
   practical: PracticalData;
+  booking: BookingData;
+  price: number;                 // ← 60 (для карточек)
+  duration: string;              // ← "~3 часа"
+  relatedTours?: string[];       // ← ручной подбор рекомендаций
+  themeColors?: ColorStop[];     // ← опционально: своя палитра
 }

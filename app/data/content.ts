@@ -1,19 +1,8 @@
-import { ColorStop, CopyData } from "../types";
+import { TourData } from "../types";
 
-export const colors: ColorStop[] = [
-  [228, 238, 250], // #E4EEFA - Hero: мягкий голубой
-  [234, 238, 244], // #EAEEF4 - переход
-  [250, 240, 225], // #FAF0E1 - Heritage: тёплый песочный
-  [244, 238, 230], // #F4EEE6 - переход
-  [230, 235, 242], // #E6EBF2 - Cinema: серо-голубой
-  [240, 236, 228], // #F0ECE4 - переход
-  [250, 240, 225], // #FAF0E1 - тёплый персиковый
-  [247, 238, 226], // #F7EEE2 - переход
-  [250, 242, 220], // #FAF2DC - Themes: кремовый
-  [246, 240, 230], // #F6F0E6 - Practical: тёплый нейтральный
-];
+export const icheriSheher: TourData = {
+  slug: "icheri-sheher",
 
-export const content: CopyData = {
   hero: {
     title: { ru: "Старый город", en: "Icheri Sheher" },
     subtitle: {
@@ -24,6 +13,7 @@ export const content: CopyData = {
       ru: "Огромный музей под открытым небом и в то же время живой город",
       en: "A vast open-air museum and a living city",
     },
+    image: "/images/old-city1.png",  // ← путь к hero-картинке
   },
 
   sections: [
@@ -45,10 +35,7 @@ export const content: CopyData = {
         ru: "Baxış: Крепостной лабиринт и Девичья башня",
         en: "View: Fortress labyrinth & Maiden Tower",
       },
-      imageLabel: {
-        ru: "ИЧЕРИ ШЕХЕР",
-        en: "ICHERI SHEHER",
-      },
+      imageLabel: { ru: "ИЧЕРИ ШЕХЕР", en: "ICHERI SHEHER" },
     },
     {
       id: "cinema",
@@ -95,14 +82,8 @@ export const content: CopyData = {
   ],
 
   themes: {
-    eyebrow: {
-      ru: "О чем будем говорить",
-      en: "What We'll Discuss",
-    },
-    title: {
-      ru: "Темы экскурсии",
-      en: "Tour Themes",
-    },
+    eyebrow: { ru: "О чем будем говорить", en: "What We'll Discuss" },
+    title: { ru: "Темы экскурсии", en: "Tour Themes" },
     items: [
       {
         title: { ru: "Восток vs Запад", en: "East vs West" },
@@ -131,10 +112,7 @@ export const content: CopyData = {
       ru: "Настоящая чайхана · Янтарный чай с пахлавой",
       en: "Authentic Chaykhana · Amber tea with baklava",
     },
-    imageLabel: {
-      ru: "ТРАДИЦИИ",
-      en: "TRADITION",
-    },
+    imageLabel: { ru: "ТРАДИЦИИ", en: "TRADITION" },
   },
 
   practical: {
@@ -154,4 +132,49 @@ export const content: CopyData = {
       ],
     },
   },
+
+  // ⭐ НОВОЕ: данные для BookingCard
+  booking: {
+    certified: { ru: "Сертифицированный гид", en: "Certified Guide" },
+    guideName: { ru: "Туры Raccoon по Баку", en: "Raccoon's Baku Tours" },
+    guideSub: {
+      ru: "Персональные и малогрупповые прогулки по городу",
+      en: "Personal & small group city journeys",
+    },
+    durationLabel: { ru: "Длительность", en: "Duration" },
+    durationValue: { ru: "~3 часа", en: "~3 Hours" },
+    formatLabel: { ru: "Формат", en: "Format" },
+    formatValue: { ru: "Пешком", en: "Walking" },
+    languagesLabel: { ru: "Языки", en: "Languages" },
+    languagesValue: { ru: "RU / EN", en: "RU / EN" },
+    ctaPrimary: {
+      ru: "Проверить даты в WhatsApp",
+      en: "Check Available Dates on WhatsApp",
+    },
+    ctaSecondary: {
+      ru: "Задать вопросы в Telegram",
+      en: "Ask questions on Telegram",
+    },
+  },
+
+  // ⭐ НОВОЕ: метрики для карточек
+  price: 60,
+  duration: "~3 часа",
+
+  // ⭐ НОВОЕ: ручной подбор рекомендаций
+  relatedTours: ["modern-baku", "night-baku"],
+
+  // ⭐ НОВОЕ: своя палитра (опционально, если хотите — оставьте эту)
+  themeColors: [
+    [228, 242, 255],
+    [238, 242, 248],
+    [255, 244, 230],
+    [248, 242, 236],
+    [226, 236, 248],
+    [244, 240, 236],
+    [255, 240, 232],
+    [252, 243, 235],
+    [255, 246, 224],
+    [248, 243, 236],
+  ],
 };
