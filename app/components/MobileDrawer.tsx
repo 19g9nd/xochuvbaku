@@ -210,7 +210,7 @@ export function MobileDrawer({
           </p>
 
           <a
-            href="https://wa.me/?text=Hi!%20I%20would%20like%20to%20book%20a%20walking%20tour."
+            href="https://wa.me/994515025160//?text=Hi!%20I%20would%20like%20to%20book%20a%20walking%20tour."
             target="_blank"
             rel="noopener noreferrer"
             className="w-full py-2.5 px-4 bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-xl font-semibold text-xs text-center shadow-sm flex items-center justify-center gap-2 transition-all"
@@ -222,7 +222,7 @@ export function MobileDrawer({
           </a>
 
           <a
-            href="https://t.me/"
+            href="https://t.me/+994515025160"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full py-2.5 px-4 bg-white border border-black/10 text-[#171C24] hover:bg-slate-50 rounded-xl font-medium text-xs text-center flex items-center justify-center gap-2 transition-all"

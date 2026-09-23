@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useReveal } from "../hooks/useReveal";
 import { Lang, SectionData } from "../types";
+import { IconMap } from "./icons";
 
 interface StoryCardProps {
   lang: Lang;
@@ -18,6 +19,7 @@ function darkenRgb(rgb: string, amount = 0.05): string {
 
 export function StoryCard({ lang, data, index, pageBg }: StoryCardProps) {
   const { ref, visible } = useReveal();
+  const Icon = IconMap[data.icon];  // ← достаём компонент по имени
   const quoteBg = pageBg ? darkenRgb(pageBg, 0.03) : "rgba(0,0,0,0.03)";
   // Русские подписи по умолчанию (если не переданы в данных)
   const defaultCaption = {
@@ -39,7 +41,10 @@ export function StoryCard({ lang, data, index, pageBg }: StoryCardProps) {
       <div className="py-6 md:py-8">
         {/* Шапка карточки */}
         <div className="flex items-center gap-3 mb-3">
-          <span className="text-2xl md:text-3xl">{data.icon}</span>
+          <Icon
+            className="w-6 h-6 md:w-7 md:h-7 text-primary-container flex-shrink-0"
+            aria-hidden="true"
+          />
           <span className="text-xs tracking-[0.3em] uppercase text-[#8c1c2b]/50 font-sans font-medium">
             {data.eyebrow[lang]}
           </span>

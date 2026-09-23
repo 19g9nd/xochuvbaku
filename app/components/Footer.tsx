@@ -49,13 +49,13 @@ export function Footer({ lang }: FooterProps) {
   const contacts = [
     {
       label: "WhatsApp Chat",
-      href: "https://wa.me/?text=Hi!",
+      href: "https://wa.me/994515025160/?text=Hi!",
       dotColor: "bg-[#25D366]",
       external: true,
     },
     {
       label: "Telegram Group",
-      href: "https://t.me/",
+      href: "https://t.me/+994515025160",
       dotColor: "bg-brand-blue",
       external: true,
     },

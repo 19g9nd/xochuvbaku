@@ -31,7 +31,7 @@ export function BookingCard({ lang }: BookingCardProps) {
     },
   };
 
-  const waHref = `https://wa.me/?text=${encodeURIComponent(
+  const waHref = `https://wa.me/994515025160/?text=${encodeURIComponent(
     lang === "ru"
       ? "Здравствуйте! Хочу узнать свободные даты для экскурсии по Ичери Шехер."
       : "Hello! I'd like to check available dates for the Icheri Sheher walking tour."
@@ -39,10 +39,10 @@ export function BookingCard({ lang }: BookingCardProps) {
 
   return (
     // Обёртка на всю ширину — только для отступов
-    <section className="my-10 md:my-14 px-5">
+   <section className="my-10 md:my-14 px-4 sm:px-5">
       {/* Сама карточка — ограничена по ширине и центрирована */}
       <div
-        className="max-w-xl mx-auto p-6 md:p-7 rounded-3xl bg-white/90 border border-brand-blue/20 shadow-sm"
+        className="max-w-md mx-auto p-6 sm:p-7 md:p-8 rounded-3xl bg-white/90 border border-brand-blue/20 shadow-sm"
         aria-labelledby="booking-card-title"
       >
         {/* === HEADER: АВАТАР + ИМЯ + БЕЙДЖ === */}
@@ -107,7 +107,7 @@ export function BookingCard({ lang }: BookingCardProps) {
             href={waHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full py-3.5 px-4 bg-brand-blue text-white rounded-2xl font-semibold text-center text-sm shadow-md hover:shadow-lg active:scale-[0.99] transition-all flex items-center justify-center gap-2"
+            className="w-full py-3.5 px-3 bg-brand-blue text-white rounded-2xl font-semibold text-center text-xs sm:text-sm shadow-md hover:shadow-lg active:scale-[0.99] transition-all flex items-center justify-center gap-2"
           >
             <span>{copy.ctaPrimary[lang]}</span>
             <svg
@@ -120,7 +120,7 @@ export function BookingCard({ lang }: BookingCardProps) {
           </a>
 
           <a
-            href="https://t.me/"
+            href="https://t.me/+994515025160"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full py-3 px-4 bg-white border border-black/10 text-[#171C24] rounded-2xl font-medium text-center text-xs hover:bg-slate-50 transition-all flex items-center justify-center gap-2"

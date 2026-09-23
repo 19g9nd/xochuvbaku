@@ -158,7 +158,7 @@ export default function OldCityLanding() {
 
             {/* Список тем */}
             <div className="space-y-4 md:space-y-6">
-              {content.themes.items.map((theme, i) => (  // ✅ content.themes.items
+              {content.themes.items.map((theme, i) => (
                 <ThemeCard key={i} lang={lang} {...theme} index={i} />
               ))}
             </div>
@@ -193,7 +193,7 @@ export default function OldCityLanding() {
               <ul className="space-y-2 md:space-y-3">
                 {content.practical.points[lang].map((point, i) => (
                   <li key={i} className="flex gap-3 text-sm text-[#1c2a38]/65 leading-relaxed">
-                    <span className="text-[#c6a052] mt-0.5 text-xs">✦</span>
+                    <span className="text-[#f59e0b] mt-0.5 text-xl">✦</span>
                     <span>{point}</span>
                   </li>
                 ))}

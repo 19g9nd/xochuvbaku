@@ -62,8 +62,8 @@ export function DesktopMenu({ lang, isOpen, onClose }: DesktopMenuProps) {
   ];
 
   const contacts = [
-    { label: "WhatsApp", href: "https://wa.me/?text=Hi!", dot: "bg-[#25D366]" },
-    { label: "Telegram", href: "https://t.me/", dot: "bg-brand-blue" },
+    { label: "WhatsApp", href: "https://wa.me/994515025160/?text=Hi!", dot: "bg-[#25D366]" },
+    { label: "Telegram", href: "https://t.me/+994515025160", dot: "bg-brand-blue" },
     { label: "Email", href: "mailto:guide@bakuwalks.az", dot: "bg-amber-500" },
     { label: "@bakuwalks", href: "https://instagram.com/", dot: "bg-[#E1306C]" },
   ];
@@ -196,7 +196,7 @@ export function DesktopMenu({ lang, isOpen, onClose }: DesktopMenuProps) {
 
               {/* CTA в меню */}
               <a
-                href="https://wa.me/?text=Hi!%20I%20would%20like%20to%20book%20a%20tour."
+                href="https://wa.me/994515025160/?text=Hi!%20I%20would%20like%20to%20book%20a%20tour."
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={onClose}

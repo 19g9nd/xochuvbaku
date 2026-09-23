@@ -29,7 +29,7 @@ export const content: CopyData = {
   sections: [
     {
       id: "history",
-      icon: "🏛️",
+      icon: "heritage",
       eyebrow: { ru: "Наследие", en: "Heritage" },
       title: { ru: "Могучие стражи Баку", en: "Mighty Guardians of Baku" },
       body: {
@@ -52,7 +52,7 @@ export const content: CopyData = {
     },
     {
       id: "cinema",
-      icon: "🎬",
+      icon: "cinema",
       eyebrow: { ru: "Легендарная комедия", en: "Legendary Comedy" },
       title: { ru: "Улочка «Черт побери!»", en: 'The "Damn!" Street' },
       body: {
@@ -66,7 +66,7 @@ export const content: CopyData = {
     },
     {
       id: "healer",
-      icon: "🪷",
+      icon: "healer",
       eyebrow: { ru: "Легендарный целитель", en: "Legendary Healer" },
       title: { ru: "Дом Мир Мовсума Аги", en: "House of Mir Movsum Aga" },
       body: {
@@ -80,7 +80,7 @@ export const content: CopyData = {
     },
     {
       id: "artist",
-      icon: "🎨",
+      icon: "artist",
       eyebrow: { ru: "Современное искусство", en: "Contemporary Art" },
       title: { ru: "Мастерская Али Шамси", en: "Ali Shamsi's Workshop" },
       body: {

@@ -23,7 +23,7 @@ export function StickyCTA({
   };
 
   // Ссылка на WhatsApp с текстом
-  const waHref = `https://wa.me/?text=${encodeURIComponent(
+  const waHref = `https://wa.me/994515025160/?text=${encodeURIComponent(
     lang === "ru"
       ? "Здравствуйте! Хочу забронировать экскурсию по Ичери Шехер."
       : "Hello! I'd like to book the Icheri Sheher walking tour."

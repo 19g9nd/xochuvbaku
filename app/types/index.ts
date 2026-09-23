@@ -1,10 +1,19 @@
 // types/index.ts
 export type Lang = "ru" | "en";
 export type ColorStop = [number, number, number]; // RGB colour [red,green,blue] values
+export type IconName =
+  | "heritage"
+  | "cinema"
+  | "healer"
+  | "artist"
+  | "caravan"
+  | "palace"
+  | "market"
+  | "garden";
 
 export interface SectionData {
   id: string;
-  icon: string;
+  icon: IconName;
   eyebrow: Record<Lang, string>; //title on both languages
   title: Record<Lang, string>; //main title on both languages
   body: Record<Lang, string>;
