@@ -47,7 +47,7 @@ export function MobileDrawer({
 
   const explore = [
     {
-      href: "#booking",
+      href: "/about",
       icon: "🦝",
       label: { ru: "О гиде Raccoon", en: "About Raccoon Guide" },
     },

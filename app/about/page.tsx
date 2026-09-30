@@ -1,7 +1,10 @@
-export default function AboutPage() {
-  return (
-    <main className="mx-auto max-w-3xl px-6 py-16">
-      <h1 className="text-3xl font-semibold">About</h1>
-    </main>
-  );
+import { AboutPage } from "../components/AboutPage";
+
+export const metadata = {
+  title: "About the Guide | Baku Walks",
+  description: "Meet Elvira Ahadova — Old City native & architectural storyteller",
+};
+
+export default function About() {
+  return <AboutPage />;
 }
